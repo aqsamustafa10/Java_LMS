@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.management.controller.QuizWindowController">
+    <stylesheets>
+        <URL value="@../css/styles.css" />
+    </stylesheets>
+    
+    <children>
+        <VBox alignment="CENTER" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
+            </padding>
+            <children>
+                <!-- Secure Mode Header -->
+                <HBox alignment="CENTER_LEFT" prefWidth="800.0" styleClass="glass-card" style="-fx-padding: 15px 30px;">
+                    <children>
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label fx:id="lblQuizTitle" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Secure Examination Terminal" />
+                                <Label styleClass="text-muted" text="Active Monitoring Enabled" />
+                            </children>
+                        </VBox>
+                        
+                        <HBox alignment="CENTER_RIGHT" spacing="15.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="body-text" text="Time Remaining:" />
+                                <Label fx:id="lblTimer" styleClass="quiz-timer" text="00:00" />
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                
+                <!-- Main Question Window -->
+                <VBox fx:id="paneQuestionBox" prefWidth="800.0" spacing="25.0" styleClass="glass-card, quiz-question-box" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label fx:id="lblQuestionIndex" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: -secondary-color;" text="Question 1 of 10" />
+                            </children>
+                        </HBox>
+                        
+                        <Text fx:id="txtQuestionText" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-fill: #ffffff; -fx-font-weight: bold;" text="What is the output of the following Java program?" wrappingWidth="720.0" />
+                        
+                        <VBox spacing="18.0" style="-fx-padding: 15px 0;">
+                            <children>
+                                <RadioButton fx:id="radOptionA" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-text-fill: #cbd5e1;" text="Option A text">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="grpOptions" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="radOptionB" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-text-fill: #cbd5e1;" text="Option B text" toggleGroup="$grpOptions" />
+                                <RadioButton fx:id="radOptionC" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-text-fill: #cbd5e1;" text="Option C text" toggleGroup="$grpOptions" />
+                                <RadioButton fx:id="radOptionD" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-text-fill: #cbd5e1;" text="Option D text" toggleGroup="$grpOptions" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+                
+                <!-- Footer Navigation Panel -->
+                <HBox alignment="CENTER_LEFT" prefWidth="800.0" styleClass="glass-card" style="-fx-padding: 15px 30px;">
+                    <children>
+                        <Label style="-fx-text-fill: #f87171; -fx-font-weight: bold;" text="⚠️ WARNING: DO NOT PRESS ESCAPE OR SWITCH WINDOWS." />
+                        
+                        <HBox alignment="CENTER_RIGHT" spacing="20.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Button fx:id="btnNext" mnemonicParsing="false" onAction="#handleNext" prefHeight="40.0" prefWidth="160.0" styleClass="btn-secondary" text="Next Question" />
+                                <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="40.0" prefWidth="160.0" styleClass="btn-primary" text="Submit Exam" visible="false" />
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

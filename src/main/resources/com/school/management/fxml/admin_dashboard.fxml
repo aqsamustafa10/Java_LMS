@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.management.controller.AdminController">
+    <stylesheets>
+        <URL value="@../css/styles.css" />
+    </stylesheets>
+    
+    <children>
+        <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- Sidebar Nav -->
+                <VBox prefWidth="250.0" styleClass="sidebar">
+                    <children>
+                        <!-- Sidebar Header -->
+                        <VBox alignment="CENTER_LEFT" spacing="5.0">
+                            <padding>
+                                <Insets bottom="30.0" left="25.0" right="25.0" top="35.0" />
+                            </padding>
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" style="-fx-font-size: 20px;" text="IQRA LMS" />
+                                <Label styleClass="text-muted" text="Administrator Portal" />
+                            </children>
+                        </VBox>
+                        
+                        <!-- Nav Buttons -->
+                        <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets left="15.0" right="15.0" />
+                            </padding>
+                            <children>
+                                <Button fx:id="btnNavDashboard" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTab" styleClass="btn-nav, btn-nav-active" text="Dashboard" />
+                                <Button fx:id="btnNavTeachers" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTab" styleClass="btn-nav" text="Teachers" />
+                                <Button fx:id="btnNavStudents" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTab" styleClass="btn-nav" text="Students" />
+                                <Button fx:id="btnNavCourses" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTab" styleClass="btn-nav" text="Courses &amp; Classes" />
+                                <Button fx:id="btnNavAssign" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTab" styleClass="btn-nav" text="Course Assignments" />
+                            </children>
+                        </VBox>
+                        
+                        <!-- Sidebar Footer -->
+                        <VBox spacing="10.0">
+                            <padding>
+                                <Insets bottom="30.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                            <children>
+                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" styleClass="btn-danger" text="Log Out" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+                
+                <!-- Main Content Panel -->
+                <StackPane fx:id="contentPane" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                    </padding>
+                    <children>
+                        
+                        <!-- Panel 1: Dashboard Overview -->
+                        <VBox fx:id="paneDashboard" spacing="25.0">
+                            <children>
+                                <Label styleClass="title-text" text="Overview Dashboard" />
+                                <HBox spacing="20.0">
+                                    <children>
+                                        <VBox prefWidth="230.0" styleClass="stat-box" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label fx:id="lblStatTeachers" styleClass="stat-value" text="0" />
+                                                <Label styleClass="stat-label" text="Total Teachers" />
+                                            </children>
+                                        </VBox>
+                                        <VBox prefWidth="230.0" styleClass="stat-box" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label fx:id="lblStatStudents" styleClass="stat-value" text="0" />
+                                                <Label styleClass="stat-label" text="Total Students" />
+                                            </children>
+                                        </VBox>
+                                        <VBox prefWidth="230.0" styleClass="stat-box" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label fx:id="lblStatCourses" styleClass="stat-value" text="0" />
+                                                <Label styleClass="stat-label" text="Total Courses" />
+                                            </children>
+                                        </VBox>
+                                        <VBox prefWidth="230.0" styleClass="stat-box" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label fx:id="lblStatAssignments" styleClass="stat-value" text="0" />
+                                                <Label styleClass="stat-label" text="Active Assignments" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                
+                                <VBox spacing="10.0" styleClass="glass-card" VBox.vgrow="ALWAYS">
+                                    <padding>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                    <children>
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Recent Class Allocations" />
+                                        <TableView fx:id="tblDashboardAssignments" prefHeight="200.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="colDashAssignTeacher" prefWidth="250.0" text="Teacher" />
+                                                <TableColumn fx:id="colDashAssignClass" prefWidth="200.0" text="Class" />
+                                                <TableColumn fx:id="colDashAssignCourse" prefWidth="350.0" text="Course" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Panel 2: Teachers -->
+                        <VBox fx:id="paneTeachers" spacing="25.0" visible="false">
+                            <children>
+                                <Label styleClass="title-text" text="Manage Teachers" />
+                                <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- Table Panel -->
+                                        <VBox spacing="15.0" styleClass="glass-card" HBox.hgrow="ALWAYS">
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="All Registered Teachers" />
+                                                <TableView fx:id="tblTeachers" VBox.vgrow="ALWAYS">
+                                                    <columns>
+                                                        <TableColumn fx:id="colTeacherId" prefWidth="180.0" text="Teacher ID" />
+                                                        <TableColumn fx:id="colTeacherName" prefWidth="320.0" text="Name" />
+                                                        <TableColumn fx:id="colTeacherPassword" prefWidth="200.0" text="Password" />
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Add Form -->
+                                        <VBox prefWidth="350.0" spacing="20.0" styleClass="glass-card">
+                                            <padding>
+                                                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Register Teacher" />
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Full Name" />
+                                                        <TextField fx:id="txtTeacherName" promptText="e.g. Dr. John Doe" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Password" />
+                                                        <TextField fx:id="txtTeacherPassword" promptText="e.g. pass123" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <Label fx:id="lblTeacherError" style="-fx-text-fill: #f87171; -fx-font-size: 13px;" visible="false" wrapText="true" />
+                                                
+                                                <Button fx:id="btnSaveTeacher" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSaveTeacher" styleClass="btn-primary" text="Register Teacher (Auto-ID)" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Panel 3: Students -->
+                        <VBox fx:id="paneStudents" spacing="25.0" visible="false">
+                            <children>
+                                <Label styleClass="title-text" text="Manage Students" />
+                                <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- Table Panel -->
+                                        <VBox spacing="15.0" styleClass="glass-card" HBox.hgrow="ALWAYS">
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="All Registered Students" />
+                                                <TableView fx:id="tblStudents" VBox.vgrow="ALWAYS">
+                                                    <columns>
+                                                        <TableColumn fx:id="colStudentId" prefWidth="130.0" text="Student ID" />
+                                                        <TableColumn fx:id="colStudentName" prefWidth="180.0" text="Name" />
+                                                        <TableColumn fx:id="colStudentClass" prefWidth="120.0" text="Class Name" />
+                                                        <TableColumn fx:id="colStudentPassword" prefWidth="120.0" text="Password" />
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Add Form -->
+                                        <VBox prefWidth="380.0" spacing="15.0" styleClass="glass-card">
+                                            <padding>
+                                                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Register Student" />
+                                                
+                                                <VBox spacing="6.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Full Name" />
+                                                        <TextField fx:id="txtStudentName" promptText="e.g. Alice Smith" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="6.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Select Class" />
+                                                        <ComboBox fx:id="cmbStudentClass" maxWidth="1.7976931348623157E308" promptText="Choose Class..." />
+                                                    </children>
+                                                </VBox>
+
+                                                <VBox spacing="6.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Select Teacher" />
+                                                        <ComboBox fx:id="cmbStudentTeacher" maxWidth="1.7976931348623157E308" promptText="Choose Teacher..." />
+                                                    </children>
+                                                </VBox>
+
+                                                <VBox spacing="6.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Select Course" />
+                                                        <ComboBox fx:id="cmbStudentCourse" maxWidth="1.7976931348623157E308" promptText="Choose Course..." />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="6.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Password" />
+                                                        <TextField fx:id="txtStudentPassword" promptText="e.g. pass123" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <Label fx:id="lblStudentError" style="-fx-text-fill: #f87171; -fx-font-size: 13px;" visible="false" wrapText="true" />
+                                                
+                                                <Button fx:id="btnSaveStudent" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSaveStudent" styleClass="btn-primary" text="Register Student (Auto-ID)" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Panel 4: Courses & Classes (Side by Side) -->
+                        <VBox fx:id="paneCourses" spacing="25.0" visible="false">
+                            <children>
+                                <Label styleClass="title-text" text="Manage Courses &amp; Classes" />
+                                <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- Left Column: Courses -->
+                                        <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <VBox spacing="15.0" styleClass="glass-card" VBox.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </padding>
+                                                    <children>
+                                                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Academic Courses" />
+                                                        <TableView fx:id="tblCourses" VBox.vgrow="ALWAYS">
+                                                            <columns>
+                                                                <TableColumn fx:id="colCourseId" prefWidth="130.0" text="Course ID" />
+                                                                <TableColumn fx:id="colCourseName" prefWidth="250.0" text="Course Name" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="15.0" styleClass="glass-card">
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </padding>
+                                                    <children>
+                                                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Add Course" />
+                                                        <VBox spacing="8.0">
+                                                            <children>
+                                                                <Label styleClass="body-text" text="Course Name" />
+                                                                <TextField fx:id="txtCourseName" promptText="e.g. Computer Science 101" />
+                                                            </children>
+                                                        </VBox>
+                                                        <Label fx:id="lblCourseError" style="-fx-text-fill: #f87171; -fx-font-size: 13px;" visible="false" wrapText="true" />
+                                                        <Button fx:id="btnSaveCourse" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSaveCourse" styleClass="btn-primary" text="Add Course" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Right Column: Classes -->
+                                        <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <VBox spacing="15.0" styleClass="glass-card" VBox.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </padding>
+                                                    <children>
+                                                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="School Classes" />
+                                                        <TableView fx:id="tblClasses" VBox.vgrow="ALWAYS">
+                                                            <columns>
+                                                                <TableColumn fx:id="colClassId" prefWidth="130.0" text="Class ID" />
+                                                                <TableColumn fx:id="colClassName" prefWidth="250.0" text="Class Name" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="15.0" styleClass="glass-card">
+                                                    <padding>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </padding>
+                                                    <children>
+                                                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Add Class" />
+                                                        <VBox spacing="8.0">
+                                                            <children>
+                                                                <Label styleClass="body-text" text="Class Name" />
+                                                                <TextField fx:id="txtClassName" promptText="e.g. Class 10-A" />
+                                                            </children>
+                                                        </VBox>
+                                                        <Label fx:id="lblClassError" style="-fx-text-fill: #f87171; -fx-font-size: 13px;" visible="false" wrapText="true" />
+                                                        <Button fx:id="btnSaveClass" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSaveClass" styleClass="btn-primary" text="Add Class" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Panel 5: Course Assignments -->
+                        <VBox fx:id="paneAssign" spacing="25.0" visible="false">
+                            <children>
+                                <Label styleClass="title-text" text="Course &amp; Class Assignments" />
+                                <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- Table Panel -->
+                                        <VBox spacing="15.0" styleClass="glass-card" HBox.hgrow="ALWAYS">
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT">
+                                                    <children>
+                                                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Active Class Allocations" />
+                                                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Button mnemonicParsing="false" onAction="#handleRemoveAssignment" styleClass="btn-danger" style="-fx-padding: 6px 12px; -fx-font-size: 12px;" text="Remove Selected" />
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </HBox>
+                                                <TableView fx:id="tblAssignments" VBox.vgrow="ALWAYS">
+                                                    <columns>
+                                                        <TableColumn fx:id="colAssignTeacher" prefWidth="220.0" text="Teacher Name / ID" />
+                                                        <TableColumn fx:id="colAssignClass" prefWidth="150.0" text="Class Assigned" />
+                                                        <TableColumn fx:id="colAssignCourse" prefWidth="250.0" text="Course Assigned" />
+                                                    </columns>
+                                                </TableView>
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Add Form -->
+                                        <VBox prefWidth="350.0" spacing="20.0" styleClass="glass-card">
+                                            <padding>
+                                                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Allocate Class" />
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Select Teacher" />
+                                                        <ComboBox fx:id="cmbAssignTeacher" maxWidth="1.7976931348623157E308" promptText="Choose Teacher..." />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Select Class" />
+                                                        <ComboBox fx:id="cmbAssignClass" maxWidth="1.7976931348623157E308" promptText="Choose Class..." />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Select Course" />
+                                                        <ComboBox fx:id="cmbAssignCourse" maxWidth="1.7976931348623157E308" promptText="Choose Course..." />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <Label fx:id="lblAssignError" style="-fx-text-fill: #f87171; -fx-font-size: 13px;" visible="false" wrapText="true" />
+                                                
+                                                <Button fx:id="btnSaveAssign" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSaveAssignment" styleClass="btn-primary" text="Allocate Class" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                    </children>
+                </StackPane>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

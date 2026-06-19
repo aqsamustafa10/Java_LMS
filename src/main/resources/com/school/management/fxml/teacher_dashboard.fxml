@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.school.management.controller.TeacherController">
+    <stylesheets>
+        <URL value="@../css/styles.css" />
+    </stylesheets>
+    
+    <children>
+        <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- Sidebar Nav -->
+                <VBox prefWidth="250.0" styleClass="sidebar">
+                    <children>
+                        <!-- Sidebar Header -->
+                        <VBox alignment="CENTER_LEFT" spacing="5.0">
+                            <padding>
+                                <Insets bottom="30.0" left="25.0" right="25.0" top="35.0" />
+                            </padding>
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" style="-fx-font-size: 20px;" text="IQRA LMS" />
+                                <Label fx:id="lblTeacherName" styleClass="text-muted" text="Teacher Portal" />
+                            </children>
+                        </VBox>
+                        
+                        <!-- Nav Buttons -->
+                        <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets left="15.0" right="15.0" />
+                            </padding>
+                            <children>
+                                <Button fx:id="btnNavAttendance" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTab" styleClass="btn-nav, btn-nav-active" text="Attendance Portal" />
+                                <Button fx:id="btnNavQuizzes" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTab" styleClass="btn-nav" text="Create Quiz" />
+                            </children>
+                        </VBox>
+                        
+                        <!-- Sidebar Footer -->
+                        <VBox spacing="10.0">
+                            <padding>
+                                <Insets bottom="30.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                            <children>
+                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" styleClass="btn-danger" text="Log Out" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+                
+                <!-- Main Content Pane -->
+                <StackPane fx:id="contentPane" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                    </padding>
+                    <children>
+                        
+                        <!-- Panel 1: Attendance Portal -->
+                        <VBox fx:id="paneAttendance" spacing="25.0">
+                            <children>
+                                <Label styleClass="title-text" text="Student Attendance Matrix" />
+                                
+                                <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="glass-card" style="-fx-padding: 15px;">
+                                    <children>
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label styleClass="body-text" text="Select Allocated Class &amp; Course" />
+                                                <ComboBox fx:id="cmbAttendanceClassCourse" onAction="#handleClassCourseSelected" prefWidth="300.0" promptText="Choose Class/Course..." />
+                                            </children>
+                                        </VBox>
+                                        
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label styleClass="body-text" text="Select Date" />
+                                                <DatePicker fx:id="dpAttendanceDate" onAction="#handleDateChanged" prefHeight="40.0" prefWidth="200.0" />
+                                            </children>
+                                        </VBox>
+                                        
+                                        <HBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Button fx:id="btnSaveAttendance" mnemonicParsing="false" onAction="#handleSaveAttendance" styleClass="btn-secondary" text="Save Attendance Record" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </HBox>
+                                
+                                <VBox spacing="15.0" styleClass="glass-card" VBox.vgrow="ALWAYS">
+                                    <padding>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                    <children>
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Class Roster" />
+                                        <TableView fx:id="tblAttendance" VBox.vgrow="ALWAYS">
+                                            <!-- Columns will be added dynamically or set up in controller, but let's declare them -->
+                                            <columns>
+                                                <TableColumn fx:id="colAttStudentId" prefWidth="200.0" text="Student ID" />
+                                                <TableColumn fx:id="colAttStudentName" prefWidth="350.0" text="Student Name" />
+                                                <TableColumn fx:id="colAttStatus" prefWidth="250.0" text="Attendance Status (Present)" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Panel 2: Create Quiz -->
+                        <VBox fx:id="paneQuizzes" spacing="25.0" visible="false">
+                            <children>
+                                <Label styleClass="title-text" text="Create MCQ Exam / Quiz" />
+                                
+                                <HBox spacing="25.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- General Quiz Configuration -->
+                                        <VBox prefWidth="420.0" spacing="20.0" styleClass="glass-card">
+                                            <padding>
+                                                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Quiz Configuration" />
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Target Class &amp; Course" />
+                                                        <ComboBox fx:id="cmbQuizClassCourse" maxWidth="1.7976931348623157E308" promptText="Choose Class/Course..." />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Quiz Title" />
+                                                        <TextField fx:id="txtQuizTitle" promptText="e.g. Midterm Quiz 1" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Time Limit (Minutes)" />
+                                                        <TextField fx:id="txtQuizTime" promptText="e.g. 15" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Questions Created" />
+                                                <ListView fx:id="lstQuizQuestions" VBox.vgrow="ALWAYS" />
+                                                
+                                                <Button fx:id="btnSaveQuiz" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSaveQuiz" styleClass="btn-primary" text="Publish Quiz to Class" />
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Add Question Builder -->
+                                        <VBox spacing="20.0" styleClass="glass-card" HBox.hgrow="ALWAYS">
+                                            <padding>
+                                                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Add MCQ Question" />
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Question Text" />
+                                                        <TextField fx:id="txtQuestionText" promptText="Enter the question here..." />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <GridPane hgap="15.0" vgap="15.0">
+                                                     <columnConstraints>
+                                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+                                                     </columnConstraints>
+                                                     <rowConstraints>
+                                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                     </rowConstraints>
+                                                    <children>
+                                                        <VBox spacing="5.0">
+                                                            <children>
+                                                                <Label styleClass="body-text" text="Option A" />
+                                                                <TextField fx:id="txtOptionA" promptText="Option A" />
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" GridPane.columnIndex="1">
+                                                            <children>
+                                                                <Label styleClass="body-text" text="Option B" />
+                                                                <TextField fx:id="txtOptionB" promptText="Option B" />
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" GridPane.rowIndex="1">
+                                                            <children>
+                                                                <Label styleClass="body-text" text="Option C" />
+                                                                <TextField fx:id="txtOptionC" promptText="Option C" />
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <children>
+                                                                <Label styleClass="body-text" text="Option D" />
+                                                                <TextField fx:id="txtOptionD" promptText="Option D" />
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </GridPane>
+                                                
+                                                <VBox spacing="8.0">
+                                                    <children>
+                                                        <Label styleClass="body-text" text="Correct Option" />
+                                                        <ComboBox fx:id="cmbCorrectOption" prefWidth="250.0" promptText="Choose correct option..." />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <Label fx:id="lblQuestionError" style="-fx-text-fill: #f87171; -fx-font-size: 13px;" visible="false" wrapText="true" />
+                                                
+                                                <HBox alignment="BOTTOM_RIGHT" spacing="15.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Button mnemonicParsing="false" onAction="#handleClearQuestionFields" styleClass="btn-danger" text="Clear Form" />
+                                                        <Button mnemonicParsing="false" onAction="#handleAddQuestion" styleClass="btn-secondary" text="Add Question to List" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                    </children>
+                </StackPane>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

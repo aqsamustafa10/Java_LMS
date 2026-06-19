@@ -1,0 +1,432 @@
+{
+  "users": [
+    {
+      "id": "01",
+      "name": "Sidra",
+      "email": "",
+      "password": "sidra123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "TCH-1001",
+      "name": "Sara",
+      "email": "",
+      "password": "sara123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "STD-1001",
+      "name": "Sarim",
+      "password": "sarim123",
+      "role": "STUDENT",
+      "className": "Class 1",
+      "teacherId": "TCH-1001",
+      "courseId": "CRS-1001"
+    },
+    {
+      "id": "TCH-1002",
+      "name": "Rahim Khan",
+      "email": "",
+      "password": "rahim123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "STD-1002",
+      "name": "Malaika",
+      "password": "malaika123",
+      "role": "STUDENT",
+      "className": "Class 2",
+      "teacherId": "TCH-1002",
+      "courseId": "CRS-1002"
+    },
+    {
+      "id": "TCH-1003",
+      "name": "Fatima",
+      "email": "",
+      "password": "fatima123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "STD-1003",
+      "name": "Falak",
+      "password": "falak123",
+      "role": "STUDENT",
+      "className": "Class 3",
+      "teacherId": "TCH-1003",
+      "courseId": "CRS-1003"
+    },
+    {
+      "id": "TCH-1004",
+      "name": "zohaib",
+      "email": "",
+      "password": "zohaib123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "STD-1004",
+      "name": "hannan",
+      "password": "hannan123",
+      "role": "STUDENT",
+      "className": "class 4",
+      "teacherId": "TCH-1004",
+      "courseId": "CRS-1004"
+    },
+    {
+      "id": "TCH-1005",
+      "name": "hamza",
+      "email": "",
+      "password": "hamza123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "STD-1005",
+      "name": "sajid",
+      "password": "sajid123",
+      "role": "STUDENT",
+      "className": "C;ass 5",
+      "teacherId": "TCH-1005",
+      "courseId": "CRS-1005"
+    },
+    {
+      "id": "TCH-1006",
+      "name": "saima",
+      "email": "",
+      "password": "saima123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "TCH-1007",
+      "name": "shahzaib",
+      "email": "",
+      "password": "shahzaib123",
+      "role": "TEACHER"
+    },
+    {
+      "id": "STD-1006",
+      "name": "zohaib",
+      "password": "zohaib123",
+      "role": "STUDENT",
+      "className": "class 4",
+      "teacherId": "TCH-1006",
+      "courseId": "CRS-1005"
+    }
+  ],
+  "classes": [
+    {
+      "classId": "CLS-1001",
+      "className": "Class 1"
+    },
+    {
+      "classId": "CLS-1002",
+      "className": "Class 2"
+    },
+    {
+      "classId": "CLS-1003",
+      "className": "Class 3"
+    },
+    {
+      "classId": "CLS-1004",
+      "className": "class 4"
+    },
+    {
+      "classId": "CLS-1005",
+      "className": "C;ass 5"
+    },
+    {
+      "classId": "CLS-1006",
+      "className": "class 6"
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "101",
+      "courseName": "Computer Science"
+    },
+    {
+      "courseId": "CRS-1001",
+      "courseName": "DLD"
+    },
+    {
+      "courseId": "CRS-1002",
+      "courseName": "English"
+    },
+    {
+      "courseId": "CRS-1003",
+      "courseName": "Science"
+    },
+    {
+      "courseId": "CRS-1004",
+      "courseName": "OOP"
+    },
+    {
+      "courseId": "CRS-1005",
+      "courseName": "OOP Program"
+    },
+    {
+      "courseId": "CRS-1006",
+      "courseName": "computer"
+    }
+  ],
+  "assignments": [
+    {
+      "assignmentId": "70ba4a78-9d8a-47db-87c1-f03ef2693ea1",
+      "teacherId": "01",
+      "className": "Class A",
+      "courseId": "101"
+    },
+    {
+      "assignmentId": "aae6ef54-ee2f-42a7-818b-9a98b40ba207",
+      "teacherId": "TCH-1001",
+      "className": "Class 1",
+      "courseId": "CRS-1001"
+    },
+    {
+      "assignmentId": "49d8dbbf-61f2-412d-a548-7891857625e0",
+      "teacherId": "TCH-1002",
+      "className": "Class 2",
+      "courseId": "CRS-1002"
+    },
+    {
+      "assignmentId": "71f1ac84-7b27-4f18-a71e-0f5b0396357d",
+      "teacherId": "TCH-1003",
+      "className": "Class 3",
+      "courseId": "CRS-1003"
+    },
+    {
+      "assignmentId": "b76070c9-6512-4d3d-95ab-3891bbbf784d",
+      "teacherId": "TCH-1004",
+      "className": "class 4",
+      "courseId": "CRS-1004"
+    },
+    {
+      "assignmentId": "50c2b566-9d63-45c4-b365-856634f38095",
+      "teacherId": "TCH-1005",
+      "className": "C;ass 5",
+      "courseId": "CRS-1005"
+    }
+  ],
+  "attendance": [
+    {
+      "attendanceId": "0ec200c2-49c4-40a0-9696-1fcb14a0e0c1",
+      "date": "2026-06-05",
+      "className": "Class 1",
+      "courseId": "CRS-1001",
+      "studentId": "STD-1001",
+      "status": "ABSENT"
+    },
+    {
+      "attendanceId": "40194411-27d4-4394-98f2-2d9638ab5d18",
+      "date": "2026-06-06",
+      "className": "Class 1",
+      "courseId": "CRS-1001",
+      "studentId": "STD-1001",
+      "status": "PRESENT"
+    },
+    {
+      "attendanceId": "b165dbd4-fddf-4bc7-ac33-4575ed3886de",
+      "date": "2026-06-06",
+      "className": "Class 2",
+      "courseId": "CRS-1002",
+      "studentId": "STD-1002",
+      "status": "PRESENT"
+    },
+    {
+      "attendanceId": "041f3714-8bc3-49c4-a521-9bec69957de6",
+      "date": "2026-06-07",
+      "className": "Class 2",
+      "courseId": "CRS-1002",
+      "studentId": "STD-1002",
+      "status": "ABSENT"
+    },
+    {
+      "attendanceId": "e844ab0a-7a4c-497a-946d-cb1c103db9f2",
+      "date": "2026-06-08",
+      "className": "Class 2",
+      "courseId": "CRS-1002",
+      "studentId": "STD-1002",
+      "status": "PRESENT"
+    },
+    {
+      "attendanceId": "899d1c4c-d384-4122-ad1d-21652cdce0d8",
+      "date": "2026-06-06",
+      "className": "Class 3",
+      "courseId": "CRS-1003",
+      "studentId": "STD-1003",
+      "status": "PRESENT"
+    },
+    {
+      "attendanceId": "285e5239-2dd1-4c0c-ac63-9c38eca044c4",
+      "date": "2026-06-07",
+      "className": "Class 3",
+      "courseId": "CRS-1003",
+      "studentId": "STD-1003",
+      "status": "ABSENT"
+    },
+    {
+      "attendanceId": "75d468d9-14ba-4df2-a283-84d531bb13c4",
+      "date": "2026-06-08",
+      "className": "Class 3",
+      "courseId": "CRS-1003",
+      "studentId": "STD-1003",
+      "status": "PRESENT"
+    },
+    {
+      "attendanceId": "8678cfeb-b4c8-4da7-b213-9599927065e9",
+      "date": "2026-06-14",
+      "className": "class 4",
+      "courseId": "CRS-1004",
+      "studentId": "STD-1004",
+      "status": "PRESENT"
+    },
+    {
+      "attendanceId": "d970f55b-4e0f-4218-837e-6ede492442f4",
+      "date": "2026-06-13",
+      "className": "class 4",
+      "courseId": "CRS-1004",
+      "studentId": "STD-1004",
+      "status": "ABSENT"
+    },
+    {
+      "attendanceId": "2fade479-93b6-4f82-bcb9-76359074c5c6",
+      "date": "2026-06-15",
+      "className": "class 4",
+      "courseId": "CRS-1004",
+      "studentId": "STD-1004",
+      "status": "ABSENT"
+    }
+  ],
+  "quizzes": [
+    {
+      "quizId": "b4f54e32-533e-4c1f-89e5-dc065e185c75",
+      "title": "Quiz !",
+      "className": "Class 1",
+      "courseId": "CRS-1001",
+      "teacherId": "TCH-1001",
+      "questions": [
+        {
+          "questionText": "What is HTML?",
+          "options": [
+            "Programming Language",
+            "Language",
+            "Hyper Text Markup Language",
+            "English"
+          ],
+          "correctOptionIndex": 2
+        }
+      ],
+      "timeLimitMinutes": 1
+    },
+    {
+      "quizId": "fea87f54-349e-4b25-ad26-547d62b37316",
+      "title": "General Knowledge",
+      "className": "Class 2",
+      "courseId": "CRS-1002",
+      "teacherId": "TCH-1002",
+      "questions": [
+        {
+          "questionText": "What is the capital of pakistan?",
+          "options": [
+            "Karachi",
+            "Islamabad",
+            "Peshawar",
+            "Lahore"
+          ],
+          "correctOptionIndex": 1
+        }
+      ],
+      "timeLimitMinutes": 1
+    },
+    {
+      "quizId": "1683851c-1474-4ee5-b388-5f29d82f166d",
+      "title": "Science Quize 1",
+      "className": "Class 3",
+      "courseId": "CRS-1003",
+      "teacherId": "TCH-1003",
+      "questions": [
+        {
+          "questionText": "How many bones in body?",
+          "options": [
+            "203",
+            "180",
+            "206",
+            "214"
+          ],
+          "correctOptionIndex": 2
+        }
+      ],
+      "timeLimitMinutes": 1
+    },
+    {
+      "quizId": "3f5c96fc-2d0e-4bc1-a007-8a53e1981998",
+      "title": "OOP",
+      "className": "class 4",
+      "courseId": "CRS-1004",
+      "teacherId": "TCH-1004",
+      "questions": [
+        {
+          "questionText": "How many pillers in OOP?",
+          "options": [
+            "8",
+            "2",
+            "9",
+            "4"
+          ],
+          "correctOptionIndex": 3
+        }
+      ],
+      "timeLimitMinutes": 1
+    }
+  ],
+  "quizResults": [
+    {
+      "resultId": "9cf222ce-d472-47d1-a1d5-f9b47b585143",
+      "quizId": "b4f54e32-533e-4c1f-89e5-dc065e185c75",
+      "quizTitle": "Quiz !",
+      "studentId": "STD-1001",
+      "studentName": "Sarim",
+      "score": 1,
+      "totalQuestions": 1,
+      "dateTaken": "2026-06-05"
+    },
+    {
+      "resultId": "0b6e2353-884b-4dcc-a44b-97b33ff34a08",
+      "quizId": "fea87f54-349e-4b25-ad26-547d62b37316",
+      "quizTitle": "General Knowledge",
+      "studentId": "STD-1002",
+      "studentName": "Malaika",
+      "score": 0,
+      "totalQuestions": 1,
+      "dateTaken": "2026-06-06"
+    },
+    {
+      "resultId": "c7f66634-f990-4250-b076-f89d5d7185b1",
+      "quizId": "1683851c-1474-4ee5-b388-5f29d82f166d",
+      "quizTitle": "Science Quize 1",
+      "studentId": "STD-1003",
+      "studentName": "Falak",
+      "score": 1,
+      "totalQuestions": 1,
+      "dateTaken": "2026-06-06"
+    },
+    {
+      "resultId": "04c357b9-7724-4853-b412-d9b8fd502f0c",
+      "quizId": "3f5c96fc-2d0e-4bc1-a007-8a53e1981998",
+      "quizTitle": "OOP",
+      "studentId": "STD-1004",
+      "studentName": "hannan",
+      "score": 0,
+      "totalQuestions": 1,
+      "dateTaken": "2026-06-14"
+    },
+    {
+      "resultId": "23aaaf66-90a1-4369-bebb-e853c8b7f7cd",
+      "quizId": "3f5c96fc-2d0e-4bc1-a007-8a53e1981998",
+      "quizTitle": "OOP",
+      "studentId": "STD-1006",
+      "studentName": "zohaib",
+      "score": 1,
+      "totalQuestions": 1,
+      "dateTaken": "2026-06-19"
+    }
+  ]
+}
